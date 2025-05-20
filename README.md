@@ -8,12 +8,13 @@ This mini project features a weather forecast web app that is based on real-time
 Features:
 - Weather summary for any city in the world.
 - Forecast of up to 5 days in advance of current date.
-- 
+- Date shown is set to searched city's timezone.
 
 ## Preview:
-![image](https://github.com/user-attachments/assets/4dcb0c25-5259-4d4a-a8a3-d59f2e095013)
-![image](https://github.com/user-attachments/assets/4d739e61-dc97-4fd2-bb56-15f158dc60d4)
-![image](https://github.com/user-attachments/assets/73681576-6240-42d4-8dca-15d5acd63d87)
+![image](https://github.com/user-attachments/assets/4782afe3-2fe7-48a1-ac93-511a66eaf29c)
+![image](https://github.com/user-attachments/assets/e6883033-bd98-4f3d-b3ad-760a8da63fd8)
+![image](https://github.com/user-attachments/assets/d04e24af-8eef-41fb-9717-a2a791318c74)
+
 
 ### Resources:
 - API: [OpenWeather API](https://openweathermap.org/api)
