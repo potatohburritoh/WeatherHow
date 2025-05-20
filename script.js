@@ -42,23 +42,25 @@ async function getFetchData(endPoint, city) {
     return response.json()
 }
 
-function getCurrentDate() {
+function getCurrentDate(timeZone) {
     const now = new Date()
+    const utcMs = now.getTime() + now.getTimezoneOffset() * 60 * 1000
 
-    const dateOptions = {
+    const cityLocalMs = utcMs + (timeZone * 1000)
+    const cityTime = new Date(cityLocalMs)
+
+    const date = cityTime.toLocaleDateString('en-GB', {
         weekday: 'short',
         day: '2-digit',
         month: 'short',
         year: 'numeric'
-    }
-    const date = now.toLocaleDateString('en-GB', dateOptions)
+    })
 
-    const timeOptions = {
+    const time = cityTime.toLocaleTimeString('en-GB', {
         hour: '2-digit',
         minute: '2-digit',
         hour12: true
-    }
-    const time = now.toLocaleTimeString('en-GB', timeOptions)
+    })
 
     return `${date}\n${time}`
 }
@@ -83,17 +85,19 @@ async function updateWeatherInfo(city) {
     const {
         name: country,
         main: { temp, humidity }, 
+        timezone: timeZone,
         weather: [{ main, icon }],
         wind: { speed }
     } = weatherData
 
+    console.log(weatherData)
     countryTxt.textContent = country
     tempTxt.textContent = `${Math.round(temp)}°C`
     conditionTxt.textContent = main
     humidityValueTxt.textContent = `${humidity} %`
     windValueTxt.textContent = `${speed} m/s`
 
-    currentDateTxt.textContent = getCurrentDate()
+    currentDateTxt.textContent = getCurrentDate(timeZone)
     weatherSummaryImg.src = `src/assets/weather/${(icon)}.svg`
 
     await updateForcastsInfo(city)
