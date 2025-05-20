@@ -1,12 +1,11 @@
-# React + Vite
+<a>
+	<img src="src/assets/weatherhowlogo.svg" alt="WeatherHow Logo" height="60" width="60" />
+</a>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# WeatherHow: City Weather Info
+This mini project features a weather forecast web app that is based on real-time weather conditions. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Resources:
+- [Animated SVG Weather Icons](https://github.com/basmilius/weather-icons?tab=readme-ov-file) by [Bas Milius](https://bas.dev)
