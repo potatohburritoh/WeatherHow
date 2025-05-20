@@ -1,8 +1,6 @@
 <a>
-	<img src="src/assets/weatherhowlogo.svg" alt="WeatherHow Logo" height="60" width="60" />
+	<img src="src/assets/weatherhowlogo.gif" alt="WeatherHow Logo" height="60" width="60" />
 </a>
-
----
 
 # WeatherHow: City Weather Info
 This mini project features a weather forecast web app that is based on real-time weather conditions. 
