@@ -11,10 +11,9 @@ Features:
 - Date shown is set to searched city's timezone.
 
 ## Preview:
-![image](https://github.com/user-attachments/assets/4782afe3-2fe7-48a1-ac93-511a66eaf29c)
-![image](https://github.com/user-attachments/assets/e6883033-bd98-4f3d-b3ad-760a8da63fd8)
-![image](https://github.com/user-attachments/assets/d04e24af-8eef-41fb-9717-a2a791318c74)
-
+<img src="https://github.com/user-attachments/assets/4782afe3-2fe7-48a1-ac93-511a66eaf29c" width="300" />
+<img src="https://github.com/user-attachments/assets/e6883033-bd98-4f3d-b3ad-760a8da63fd8" width="300" />
+<img src="https://github.com/user-attachments/assets/d04e24af-8eef-41fb-9717-a2a791318c74" width="300" />
 
 ### Resources:
 - API: [OpenWeather API](https://openweathermap.org/api)
