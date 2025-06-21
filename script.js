@@ -126,17 +126,36 @@ function updateForecastItems(weatherData) {
         dt_txt: date,
         weather: [{ icon }],
         main: { temp }
-    } = weatherData
+    } = weatherData;
 
-    const forecastItem = `
-        <div class="forecast-item">
-            <h5 class="forecast-item-date regular-txt">${getDate(date)}</h5>
-            <img src="src/assets/weather/${(icon)}.svg" class="forecast-item-img" />
-            <h5 class="forecast-item-temp">${Math.round(temp)} ℃</h5>
-        </div>
-    `
-
-    forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem)
+    // Preload the image
+    const img = new Image();
+    img.onload = function() {
+        // Image loaded successfully, now insert the HTML
+        const forecastItem = `
+            <div class="forecast-item">
+                <h5 class="forecast-item-date regular-txt">${getDate(date)}</h5>
+                <img src="src/assets/weather/${icon}.svg" class="forecast-item-img" />
+                <h5 class="forecast-item-temp">${Math.round(temp)} ℃</h5>
+            </div>
+        `;
+        forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem);
+    };
+    
+    img.onerror = function() {
+        console.log(`Failed to preload forecast icon: ${icon}`);
+        // Insert with fallback
+        const forecastItem = `
+            <div class="forecast-item">
+                <h5 class="forecast-item-date regular-txt">${getDate(date)}</h5>
+                <img src="https://openweathermap.org/img/wn/${icon}@2x.png" class="forecast-item-img" />
+                <h5 class="forecast-item-temp">${Math.round(temp)} ℃</h5>
+            </div>
+        `;
+        forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem);
+    };
+    
+    img.src = `src/assets/weather/${icon}.svg`;
 }
 
 function showDisplaySection(section) {
