@@ -25,7 +25,7 @@ searchBtn.addEventListener('click', () => {
     }
 })
 cityInput.addEventListener('keydown', (event) => {
-    if (event.key == 'Enter' && 
+    if (event.key == 'Enter' &&
         cityInput.value.trim() != ''
     ) {
         updateWeatherInfo(cityInput.value)
@@ -84,7 +84,7 @@ async function updateWeatherInfo(city) {
 
     const {
         name: country,
-        main: { temp, humidity }, 
+        main: { temp, humidity },
         timezone: timeZone,
         weather: [{ main, icon }],
         wind: { speed }
@@ -98,7 +98,13 @@ async function updateWeatherInfo(city) {
     windValueTxt.textContent = `${speed} m/s`
 
     currentDateTxt.textContent = getCurrentDate(timeZone)
-    weatherSummaryImg.src = `src/assets/weather/${(icon)}.svg`
+    weatherSummaryImg.src = `src/assets/weather/${icon}.svg`;
+    weatherSummaryImg.onerror = function () {
+        this.src = `src/assets/weather/${icon.toLowerCase()}.svg`;
+        this.onerror = function () {
+            this.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+        };
+    };
 
     await updateForcastsInfo(city)
     showDisplaySection(weatherInfoSection)
@@ -112,12 +118,12 @@ async function updateForcastsInfo(city) {
 
     forecastItemsContainer.innerHTML = ''
     forecastsData.list.forEach(forecastWeather => {
-        if (forecastWeather.dt_txt.includes(timeTaken) && 
+        if (forecastWeather.dt_txt.includes(timeTaken) &&
             !forecastWeather.dt_txt.includes(todayDate)
         ) {
             updateForecastItems(forecastWeather)
         }
-        
+
     })
 }
 
@@ -128,10 +134,8 @@ function updateForecastItems(weatherData) {
         main: { temp }
     } = weatherData;
 
-    // Preload the image
     const img = new Image();
-    img.onload = function() {
-        // Image loaded successfully, now insert the HTML
+    img.onload = function () {
         const forecastItem = `
             <div class="forecast-item">
                 <h5 class="forecast-item-date regular-txt">${getDate(date)}</h5>
@@ -141,7 +145,18 @@ function updateForecastItems(weatherData) {
         `;
         forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem);
     };
-    
+
+    img.onerror = function () {
+        const forecastItem = `
+            <div class="forecast-item">
+                <h5 class="forecast-item-date regular-txt">${getDate(date)}</h5>
+                <img src="https://openweathermap.org/img/wn/${icon}@2x.png" class="forecast-item-img" />
+                <h5 class="forecast-item-temp">${Math.round(temp)} ℃</h5>
+            </div>
+        `;
+        forecastItemsContainer.insertAdjacentHTML('beforeend', forecastItem);
+    };
+
     img.src = `src/assets/weather/${icon}.svg`;
 }
 
