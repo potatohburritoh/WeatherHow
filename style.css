@@ -206,5 +206,22 @@ body::before {
     border-radius: 50%;
     padding: 5px;
 }
-
 /* END SECTION: MESSAGE */
+
+@media (max-width: 480px) {
+    .main-container {
+        width: 90vw;
+        max-width: 350px;
+        margin: 0 10px;
+    }
+    
+    .section-message img {
+        max-height: 150px;
+        max-width: 150px;
+    }
+    
+    .weather-summary-img {
+        width: 100px;
+        height: 100px;
+    }
+}
